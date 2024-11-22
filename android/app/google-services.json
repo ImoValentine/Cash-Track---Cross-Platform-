@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "907833501020",
+    "project_id": "loginpage-7d6b3",
+    "storage_bucket": "loginpage-7d6b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907833501020:android:926845ac227f4f8dd78d99",
+        "android_client_info": {
+          "package_name": "com.mycompany.cashtrack27"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk1RUoXWIRiKWheqp6_pqVs5zOsTmMwfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
