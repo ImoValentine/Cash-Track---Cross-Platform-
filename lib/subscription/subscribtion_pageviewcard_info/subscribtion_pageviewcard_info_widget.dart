@@ -903,8 +903,20 @@ class _SubscribtionPageviewcardInfoWidgetState
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'HomepageToolkit',
+                                    queryParameters: {
+                                      'ctrackid': serializeParam(
+                                        '',
+                                        ParamType.String,
+                                      ),
+                                      'nameou': serializeParam(
+                                        '',
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
                                 },
                                 text: 'Return to toolkit',
                                 options: FFButtonOptions(
@@ -1051,22 +1063,17 @@ class _SubscribtionPageviewcardInfoWidgetState
                                                   .tranactionInitializeCall
                                                   .call(
                                             email: currentUserEmail,
-                                            amount: '1800',
+                                            amount: '18000',
                                           );
 
                                           if ((_model.apiResultbf9?.succeeded ??
                                               true)) {
                                             FFAppState().AuthURL = PaystackGroup
                                                 .tranactionInitializeCall
-                                                .authURL(
+                                                .authoURL(
                                               (_model.apiResultbf9?.jsonBody ??
                                                   ''),
                                             )!;
-                                            safeSetState(() {});
-                                            await launchURL(
-                                                FFAppState().AuthURL);
-                                            await Future.delayed(const Duration(
-                                                milliseconds: 420000));
                                             FFAppState().Referencetransa =
                                                 PaystackGroup
                                                     .tranactionInitializeCall
@@ -1075,16 +1082,20 @@ class _SubscribtionPageviewcardInfoWidgetState
                                                   ''),
                                             )!;
                                             safeSetState(() {});
-                                            _model.apiResult2qt =
+                                            await launchURL(
+                                                FFAppState().AuthURL);
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 60000));
+                                            _model.verifiedPaystack =
                                                 await PaystackGroup
                                                     .verifyTransactionCall
                                                     .call(
-                                              transReference:
+                                              reference1:
                                                   FFAppState().Referencetransa,
                                             );
 
-                                            if ((_model
-                                                    .apiResult2qt?.succeeded ??
+                                            if ((_model.verifiedPaystack
+                                                    ?.succeeded ??
                                                 true)) {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -1106,6 +1117,18 @@ class _SubscribtionPageviewcardInfoWidgetState
                                                           .secondary,
                                                 ),
                                               );
+                                              FFAppState().Authcode =
+                                                  PaystackGroup
+                                                      .verifyTransactionCall
+                                                      .authCode(
+                                                (_model.verifiedPaystack
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!;
+                                              safeSetState(() {});
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 20000));
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -1132,7 +1155,12 @@ class _SubscribtionPageviewcardInfoWidgetState
                                             _model.apiResultp2a =
                                                 await PaystackGroup
                                                     .createPaystackSubscriptionCall
-                                                    .call();
+                                                    .call(
+                                              customerEmail: currentUserEmail,
+                                              plan: 'PLN_21caillw662gp68',
+                                              authorozation:
+                                                  FFAppState().Authcode,
+                                            );
 
                                             if ((_model
                                                     .apiResultp2a?.succeeded ??
@@ -2000,8 +2028,20 @@ class _SubscribtionPageviewcardInfoWidgetState
                                       alignment:
                                           const AlignmentDirectional(0.0, -1.0),
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            'HomepageToolkit',
+                                            queryParameters: {
+                                              'ctrackid': serializeParam(
+                                                '',
+                                                ParamType.String,
+                                              ),
+                                              'nameou': serializeParam(
+                                                '',
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         },
                                         text: 'Return to toolkit',
                                         options: FFButtonOptions(
@@ -2146,10 +2186,140 @@ class _SubscribtionPageviewcardInfoWidgetState
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       120.0, 15.0, 120.0, 15.0),
                                   child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      _model.transactionInitialize =
+                                          await PaystackGroup
+                                              .tranactionInitializeCall
+                                              .call(
+                                        email: currentUserEmail,
+                                        amount: '500000',
+                                      );
+
+                                      if ((_model.transactionInitialize
+                                              ?.succeeded ??
+                                          true)) {
+                                        FFAppState().AuthURL = PaystackGroup
+                                            .tranactionInitializeCall
+                                            .authoURL(
+                                          (_model.transactionInitialize
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!;
+                                        FFAppState().Referencetransa =
+                                            PaystackGroup
+                                                .tranactionInitializeCall
+                                                .referenceT(
+                                          (_model.transactionInitialize
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!;
+                                        safeSetState(() {});
+                                        await launchURL(FFAppState().AuthURL);
+                                        await Future.delayed(const Duration(
+                                            milliseconds: 60000));
+                                        _model.verifiedPaystack2 =
+                                            await PaystackGroup
+                                                .verifyTransactionCall
+                                                .call(
+                                          reference1:
+                                              FFAppState().Referencetransa,
+                                        );
+
+                                        if ((_model
+                                                .verifiedPaystack2?.succeeded ??
+                                            true)) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Transaction Verified',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 20000));
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Transaction not verified',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+
+                                        _model.createSubscriptionPaystack =
+                                            await PaystackGroup
+                                                .createPaystackSubscriptionCall
+                                                .call();
+
+                                        if ((_model.createSubscriptionPaystack
+                                                ?.succeeded ??
+                                            true)) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Subscription created',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'API-payment gateway failed',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      }
+
+                                      safeSetState(() {});
                                     },
-                                    text: 'Default Access',
+                                    text: 'Sign Up',
                                     options: FFButtonOptions(
                                       height: 41.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -2880,8 +3050,20 @@ class _SubscribtionPageviewcardInfoWidgetState
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'HomepageToolkit',
+                                    queryParameters: {
+                                      'ctrackid': serializeParam(
+                                        '',
+                                        ParamType.String,
+                                      ),
+                                      'nameou': serializeParam(
+                                        '',
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
                                 },
                                 text: 'Return to toolkit',
                                 options: FFButtonOptions(
@@ -3819,8 +4001,20 @@ class _SubscribtionPageviewcardInfoWidgetState
                                     ),
                                   ),
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        'HomepageToolkit',
+                                        queryParameters: {
+                                          'ctrackid': serializeParam(
+                                            '',
+                                            ParamType.String,
+                                          ),
+                                          'nameou': serializeParam(
+                                            '',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     },
                                     text: 'Return to toolkit',
                                     options: FFButtonOptions(

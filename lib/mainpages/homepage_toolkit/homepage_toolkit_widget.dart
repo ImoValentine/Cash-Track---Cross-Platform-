@@ -749,7 +749,7 @@ class _HomepageToolkitWidgetState extends State<HomepageToolkitWidget> {
 
                       context.goNamedAuth('Loginmk2', context.mounted);
                     },
-                    text: 'Logout',
+                    text: 'Logout - Return to Login Screen',
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:

@@ -329,7 +329,7 @@ class _WelcomepageNewUserWidgetState extends State<WelcomepageNewUserWidget> {
                             }.withoutNulls,
                           );
                         },
-                        text: 'Get Started ',
+                        text: 'Get Started with Toolkit',
                         options: FFButtonOptions(
                           height: 59.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(

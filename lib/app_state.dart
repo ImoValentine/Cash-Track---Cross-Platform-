@@ -91,4 +91,10 @@ class FFAppState extends ChangeNotifier {
   set Referencetransa(String value) {
     _Referencetransa = value;
   }
+
+  String _Authcode = '';
+  String get Authcode => _Authcode;
+  set Authcode(String value) {
+    _Authcode = value;
+  }
 }

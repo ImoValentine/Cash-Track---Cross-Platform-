@@ -136,7 +136,7 @@ class _AddAgreeDetailsDebtorfoundEnterWidgetState
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                          hintText: 'TextField',
+                          hintText: 'Enter Loan Payment Amount',
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -224,7 +224,8 @@ class _AddAgreeDetailsDebtorfoundEnterWidgetState
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                          hintText: 'TextField',
+                          hintText:
+                              'Enter Full Amount to be paid back- incl. markup',
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -406,7 +407,7 @@ class _AddAgreeDetailsDebtorfoundEnterWidgetState
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                          hintText: 'TextField',
+                          hintText: 'Confirm your First name and Surname',
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',

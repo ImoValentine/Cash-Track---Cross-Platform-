@@ -19,9 +19,15 @@ class SubscribtionPageviewcardInfoModel
   // Stores action output result for [Backend Call - API (Tranaction Initialize)] action in Button widget.
   ApiCallResponse? apiResultbf9;
   // Stores action output result for [Backend Call - API (Verify Transaction )] action in Button widget.
-  ApiCallResponse? apiResult2qt;
+  ApiCallResponse? verifiedPaystack;
   // Stores action output result for [Backend Call - API (CreatePaystackSubscription)] action in Button widget.
   ApiCallResponse? apiResultp2a;
+  // Stores action output result for [Backend Call - API (Tranaction Initialize)] action in Button widget.
+  ApiCallResponse? transactionInitialize;
+  // Stores action output result for [Backend Call - API (Verify Transaction )] action in Button widget.
+  ApiCallResponse? verifiedPaystack2;
+  // Stores action output result for [Backend Call - API (CreatePaystackSubscription)] action in Button widget.
+  ApiCallResponse? createSubscriptionPaystack;
 
   @override
   void initState(BuildContext context) {}

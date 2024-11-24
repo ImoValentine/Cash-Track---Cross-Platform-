@@ -140,21 +140,21 @@ class TranactionInitializeCall {
         response,
         r'''$.data.reference''',
       ));
-  String? authURL(dynamic response) => castToType<String>(getJsonField(
+  String? authoURL(dynamic response) => castToType<String>(getJsonField(
         response,
-        r'''$.message''',
+        r'''$.data.authorization_url''',
       ));
 }
 
 class VerifyTransactionCall {
   Future<ApiCallResponse> call({
-    String? transReference = '',
+    String? reference1 = '[appState.Referencetransa]',
   }) async {
     final baseUrl = PaystackGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
       callName: 'Verify Transaction ',
-      apiUrl: '$baseUrl/transaction/verify/{{Trans_reference}}',
+      apiUrl: '$baseUrl/transaction/verify/$reference1',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
@@ -170,6 +170,11 @@ class VerifyTransactionCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? authCode(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data.authorization.authorization_code''',
+      ));
 }
 
 /// End Paystack Group Code

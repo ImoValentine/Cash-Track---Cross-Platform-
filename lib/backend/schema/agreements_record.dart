@@ -65,6 +65,11 @@ class AgreementsRecord extends FirestoreRecord {
   String get clientCell => _clientCell ?? '';
   bool hasClientCell() => _clientCell != null;
 
+  // "Customer_code" field.
+  String? _customerCode;
+  String get customerCode => _customerCode ?? '';
+  bool hasCustomerCode() => _customerCode != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _ctrackref = snapshotData['ctrackref'] as String?;
@@ -76,6 +81,7 @@ class AgreementsRecord extends FirestoreRecord {
     _useremail = snapshotData['useremail'] as String?;
     _surname = snapshotData['surname'] as String?;
     _clientCell = snapshotData['client_cell'] as String?;
+    _customerCode = snapshotData['Customer_code'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -123,6 +129,7 @@ Map<String, dynamic> createAgreementsRecordData({
   String? useremail,
   String? surname,
   String? clientCell,
+  String? customerCode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +143,7 @@ Map<String, dynamic> createAgreementsRecordData({
       'useremail': useremail,
       'surname': surname,
       'client_cell': clientCell,
+      'Customer_code': customerCode,
     }.withoutNulls,
   );
 
@@ -156,7 +164,8 @@ class AgreementsRecordDocumentEquality implements Equality<AgreementsRecord> {
         e1?.submissionID == e2?.submissionID &&
         e1?.useremail == e2?.useremail &&
         e1?.surname == e2?.surname &&
-        e1?.clientCell == e2?.clientCell;
+        e1?.clientCell == e2?.clientCell &&
+        e1?.customerCode == e2?.customerCode;
   }
 
   @override
@@ -170,7 +179,8 @@ class AgreementsRecordDocumentEquality implements Equality<AgreementsRecord> {
         e?.submissionID,
         e?.useremail,
         e?.surname,
-        e?.clientCell
+        e?.clientCell,
+        e?.customerCode
       ]);
 
   @override
